@@ -31,8 +31,14 @@ export default function ProductForm({ product, onSaved, onCancel }) {
 
   return (
     <div className="modal-backdrop" onClick={onCancel}>
-      <div className="card modal" onClick={(e) => e.stopPropagation()}>
-        <h2>{editing ? 'Edit product' : 'Add product'}</h2>
+      <div className="modal" role="dialog" aria-modal="true" aria-labelledby="product-form-title" onClick={(e) => e.stopPropagation()}>
+        <div className="modal-head">
+          <div>
+            <h2 id="product-form-title">{editing ? 'Edit product' : 'Add a product'}</h2>
+            <p>{editing ? 'Update the details in your catalog.' : 'Enter the details for your new catalog item.'}</p>
+          </div>
+          <button className="icon-button" type="button" onClick={onCancel} aria-label="Close">×</button>
+        </div>
         {error && <div className="alert error">{error}</div>}
         <form onSubmit={submit}>
           <label>Product name
@@ -50,8 +56,8 @@ export default function ProductForm({ product, onSaved, onCancel }) {
             </label>
           </div>
           <div className="actions">
-            <button type="button" className="secondary" onClick={onCancel}>Cancel</button>
-            <button disabled={busy}>{busy ? 'Saving…' : 'Save'}</button>
+            <button type="button" className="button secondary" onClick={onCancel}>Cancel</button>
+            <button className="button" disabled={busy}>{busy ? 'Saving…' : editing ? 'Save changes' : 'Add product'}</button>
           </div>
         </form>
       </div>
