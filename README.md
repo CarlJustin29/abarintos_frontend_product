@@ -1,6 +1,6 @@
 # Product Management - React frontend
 
-Login -> Product list -> Add / Edit / Delete -> Logout. Talks only to the LavaLust API (never to the database).
+Login -> Product list -> Logout. Admins can also add, edit, and delete products. Regular users have read-only access. The app talks only to the LavaLust API (never to the database).
 
 ## Run locally
 ```
